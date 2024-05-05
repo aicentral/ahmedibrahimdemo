@@ -1,3 +1,6 @@
+The article descriping all the updates made here can be found on Linkedin
+[Showcase Your Python Projects Online: From ML to LLM and More](https://www.linkedin.com/pulse/showcase-your-python-projects-online-from-ml-llm-more-ahmed-ibrahim-f5xfc)
+
 # Welcome to streamlit
 
 This is the app you get when you run `streamlit hello`, extracted as its own app.
