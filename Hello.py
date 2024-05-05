@@ -1,19 +1,15 @@
-# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
+# simple streamlit app with a chat box
 import streamlit as st
-st.write("# Welcome to my demo page!")
-s =  st.text_input('enter your name')
-if len(s)>0:
-  st.write('Hello ' + s)
+st.title("Chat box demo.")
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+
+if user_input := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    st.chat_message("user").write(user_input)
+    # For a working AI assistant, you should replace the next line with an LLM call
+    ai_answer= "My responses are limited, you have to ask the right question"
+    st.session_state.messages.append({"role": "assistant", "content": ai_answer})
+    st.chat_message("assistant").write(ai_answer)
